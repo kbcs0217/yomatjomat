@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.mapper.BoardMapper">
+	
+	<select id="selectPerPage" resultType="Board" parameterType="BoardVo">
+	    <![CDATA[
+			select * from (select ROWNUM rnum, aa.* from 
+			(select B.*, M.nickName from BOARD B, MEMBER M where B.EMAIL = M.EMAIL 
+			order by BOARD_NO desc) aa)
+			where rnum > #{startRow} and rnum<=#{endRow}
+		]]>
+	</select>
+	<select id="selectCount" resultType="long">
+		select count(BOARD_NO) from BOARD
+	</select>
+	<select id="selectBySeq" resultType="Board" parameterType="long">
+		select * from BOARD where BOARD_NO=#{board_no}
+	</select>
+	<insert id="insert" parameterType="Board">
+		insert into BOARD values(BOARD_SEQ.nextval, #{email}, #{subject}, 
+		#{content}, 0, 0, SYSDATE)
+
+	</insert>
+	<update id="update" parameterType="Board">
+		update BOARD set 
+		EMAIL=#{email}, SUBJECT=#{subject}, CONTENT=#{content}, WDATE=SYSDATE, 
+		VIEWCOUNT=#{viewcount}, THUMBSUP=#{thumbsup}  
+		where BOARD_NO=#{board_no} 
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from BOARD where BOARD_NO=#{board_no}
+	</delete>
+</mapper>	
