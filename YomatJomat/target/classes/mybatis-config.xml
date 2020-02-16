@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+   	   <typeAlias alias="Member" type="com.yj.domain.Member"/>
+   	   <typeAlias alias="Board" type="com.yj.domain.Board"/>
+   	   <typeAlias alias="BoardVo" type="com.yj.domain.BoardVo"/>
+   	   <typeAlias alias="NoticeVo" type="com.yj.domain.NoticeVo"/>
+   	   <typeAlias alias="QnaVo" type="com.yj.domain.QnaVo"/>
+   	   <typeAlias alias="Notice" type="com.yj.domain.Notice"/>
+   	   <typeAlias alias="Qna" type="com.yj.domain.Qna"/>
+   	   <typeAlias alias="NoticeImage" type="com.yj.domain.NoticeImage"/>
+
+
+   </typeAliases>
+     	   
+     
+     <!--  
+   <mappers>
+   	   <mapper resource="com/yj/mapper/MembersMapper.xml"/>
+   </mappers>
+   -->
+</configuration>
